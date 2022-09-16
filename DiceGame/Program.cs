@@ -1,8 +1,7 @@
 ﻿using System;
+using DiceGame;
 using static System.Console;
 
-Random myRandomGenerator = new Random();
+PlayGame newGame = new PlayGame();
 
-int randNum = myRandomGenerator.Next(1, 7);
-WriteLine(randNum);
-ReadKey();
+newGame.Start();
