@@ -4,13 +4,16 @@ namespace DiceGame
 {
     public class PlayGame
     {
-        private string GameName = "Dice & More Dice";
+        private string GameName;
+        private Random RandomGenerator;
         private int Score;
 
 
         public PlayGame()
         {
             Score = 0;
+            GameName = "Dice & More Dice";
+            RandomGenerator = new Random();
         }
 
         public void Start()
@@ -33,26 +36,61 @@ namespace DiceGame
             {
                 WriteLine("Okay.... Next Time");
             }
-            Write("Press Any Key to Exit. ");
-            ReadKey();
+            Write("Press Any Key to Exit: ");
+            ReadLine();
         }
 
         private void PlayRound()
         {
             Clear();
+
             WriteLine("I'm about to roll the dice! ");
-            WriteLine("Is it going to be low {1 , 2, 3 } or high {4, 5, 6 }?");
-            string response
+            WriteLine("Is it going to be low {1, 2, 3 } or high {4, 5, 6 }?");
+
+            string response = ReadLine().Trim().ToLower();
+            int roll = RandomGenerator.Next(1, 7);
+            WriteLine($"The roll was {roll}");
+            if (response == "high")
+            {
+                WriteLine("You Guessed High... ");
+                if (roll <= 3)
+                {
+                    Lose();
+                }
+                else
+                {
+                    Win();
+                }
+            }
+            else if (response == "low")
+            {
+                WriteLine("You Guessed Low... ");
+                if (roll <= 3)
+                {
+                    Win();
+                }
+                else
+                {
+                    Lose();
+                }
+            }
+            else
+            {
+                WriteLine("Invalid Guess... ");
+            }
+
         }
 
         private void Win()
         {
-
+            WriteLine("You Win! ");
+            WriteLine($"Score: {Score}");
         }
 
         public void Lose()
         {
-
+            WriteLine("You lose!!! ");
+            WriteLine($"Score: {Score}");
         }
 
         public void PlayAgain()
