@@ -23,13 +23,26 @@ namespace DiceGame
             WriteLine("\t> You will guess if it is high or low. ");
             WriteLine("\t> If correct, You get a point. ");
             WriteLine("\n> Ready to Play? (Y/N) ");
-            Write("> Press Any Key to Exit: ");
+            string response = ReadLine().Trim().ToLower();
+            if (response == "y")
+            {
+                WriteLine("Awesome! Let's Begin... ");
+                PlayRound();
+            }
+            else
+            {
+                WriteLine("Okay.... Next Time");
+            }
+            Write("Press Any Key to Exit. ");
             ReadKey();
         }
 
         private void PlayRound()
         {
-
+            Clear();
+            WriteLine("I'm about to roll the dice! ");
+            WriteLine("Is it going to be low {1 , 2, 3 } or high {4, 5, 6 }?");
+            string response
         }
 
         private void Win()
