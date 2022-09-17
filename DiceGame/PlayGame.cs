@@ -79,23 +79,39 @@ namespace DiceGame
                 WriteLine("Invalid Guess... ");
             }
 
+            PlayAgain();
+
         }
 
         private void Win()
         {
+            Score++;
             WriteLine("You Win! ");
             WriteLine($"Score: {Score}");
+
         }
 
         public void Lose()
         {
+            Score--;
             WriteLine("You lose!!! ");
             WriteLine($"Score: {Score}");
+
         }
 
         public void PlayAgain()
         {
+            Write("Would you like to play again? (Y/N) ");
+            string response = ReadLine().ToLower().Trim();
 
+            if (response == "y")
+            {
+                PlayRound();
+            }
+            else
+            {
+                Write("Sounds good! See you next time. ");
+            }
         }
     }
 }
